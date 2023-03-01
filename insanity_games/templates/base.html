@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %} </title>
+    <link rel="shortcut icon" type="image/ico" href="{% static 'images/favicon.ico' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+    <!-- Boostrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg py-3 navbar-dark" style="background-color: #51087E">
+      <a class="navbar-brand" href="{% url 'homepage' %}    "><img src="{% static 'images/insanity-logo-no-text.png' %}" style="width: 100px; height: 100px"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto px-10" id="core_nav">
+          <li class="nav-item active core">
+            <a class="nav-link" href="#">GAMES <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active core">
+            <a class="nav-link" href="#">ABOUT US</a>
+          </li>
+          <li class="nav-item active core">
+            <a class="nav-link" href="#">CONTACT</a>
+          </li>
+          <li class="nav-item active core">
+            <a class="nav-link" href="#">OPINIONS</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto" id="user_nav">
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
+          <form id="logout" method="POST" action="">{% csrf_token %}
+          <input type="hidden">
+          </form>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="">LOGIN</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="">SIGN UP</a>
+        </li>
+        {% endif %}
+      </ul>
+      </div>
+    </nav>
+    {% block body %}
+
+    {% endblock %}
+
+    <div class="container">
+      <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+          <li class="nav-item"><a href="{% url 'homepage' %}" class="nav-link px-2 text-muted">Home</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Games</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About Us</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contact</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Opinions</a></li>
+        </ul>
+        <p class="text-center text-muted">© Insanity Games {% now "Y" %} </p>
+      </footer>
+    </div>
+
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>
