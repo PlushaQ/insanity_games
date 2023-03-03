@@ -8,6 +8,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
     <!-- Boostrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    {% block head %}
+    {% endblock %}
 </head>
 <body>
     <nav class="navbar navbar-expand-lg py-3 navbar-dark" style="background-color: #51087E">
@@ -34,16 +36,16 @@
         {% if user.is_authenticated %}
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
-          <form id="logout" method="POST" action="">{% csrf_token %}
+          <form id="logout" method="POST" action="{% url 'logout' %}">{% csrf_token %}
           <input type="hidden">
           </form>
         </li>
         {% else %}
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="">LOGIN</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'login' %}">LOGIN</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="">SIGN UP</a>
+          <a class="nav-link active" href="{% url 'signup' %}">SIGN UP</a>
         </li>
         {% endif %}
       </ul>

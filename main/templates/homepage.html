@@ -1,11 +1,35 @@
 {% extends 'base.html' %}
+
 {% load static %}
+
 {% block title %}
 Insanity Games
 {% endblock %}
 
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'homepage.css' %}">
+{% endblock %}
+
 {% block body %}
-<div>
+<div class="background-img">
     <img id="background" src="{% static 'images/background.png' %}" alt="main background" width="100%">
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <h1 id="our-game"><strong>OUR GAMES</strong></h1>
+        </div>
+        <div class="col-md-6">
+            <p class="mission" style="padding-right:10px;">Our mission is to create engaging and immersive games that provide players with an escape from reality, challenge their skills and creativity, and foster a sense of community and connection. We strive to deliver unique and innovative gameplay experiences that push the boundaries of what's possible in the world of gaming.</p>
+        </div>
+    </div>
+</div>
+<div class="w-100"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <p class="mission2">We believe that games have the power to bring people together and provide a platform for personal growth and self-discovery. Whether it's through puzzle-solving, exploration, or social interaction, our games are designed to captivate and inspire players of all ages and backgrounds. We're committed to crafting games that are not only entertaining but also meaningful, leaving a lasting impression on the players and contributing to the advancement of the gaming industry as a whole.</p>
+        </div>
+    </div>
 </div>
 {% endblock %}
