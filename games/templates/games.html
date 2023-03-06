@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}
+    Games - Insanity Games
+{% endblock %}
+
+{% block body %}
+    <div class="container my-5">
+        <h1 class="text-center mb-5">Games</h1>
+        <div class="row">
+            {% for game in games.all %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img class="card-img-top" src="{{ game.cover.url }}" alt="{{ game.title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ game.title }}</h5>
+                        <p class="card-text">{{ game.short_description }}</p>
+                        <p class="card-text">Release date: {{ game.pretty_release_date }}</p>
+                        <p class="card-text">Genre: {{ game.genre }}</p>
+                        <p class="card-text">Tags: {{ game.tags }}</p>
+                        <a href="{% url 'game' game.title %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p>No games found.</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

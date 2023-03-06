@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+About Insanity Games
+{% endblock %}
+
+
+{% block body %}
+    <section id="history" class="py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <h2 class="text-center mb-4">Our History</h2>
+          <p class="lead">{{ history }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="mission" class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <h2 class="text-center mb-4">Our Mission</h2>
+          <p class="lead">{{ mission }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="values" class="py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <h2 class="text-center mb-4">Our Values</h2>
+          <ul class="lead">
+            {% for value in values %}
+              <li>{{ value }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

@@ -13,20 +13,20 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg py-3 navbar-dark" style="background-color: #51087E">
-      <a class="navbar-brand" href="{% url 'homepage' %}    "><img src="{% static 'images/insanity-logo-no-text.png' %}" style="width: 100px; height: 100px"></a>
+      <a class="navbar-brand" href="{% url 'homepage' %}"><img src="{% static 'images/insanity-logo-no-text.png' %}" style="width: 100px; height: 100px"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto px-10" id="core_nav">
           <li class="nav-item active core">
-            <a class="nav-link" href="#">GAMES <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{% url 'games' %}">GAMES <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item active core">
-            <a class="nav-link" href="#">ABOUT US</a>
+            <a class="nav-link" href="{% url 'about_us' %}">ABOUT US</a>
           </li>
           <li class="nav-item active core">
-            <a class="nav-link" href="#">CONTACT</a>
+            <a class="nav-link" href="{% url 'contact_us' %}">CONTACT</a>
           </li>
           <li class="nav-item active core">
             <a class="nav-link" href="#">OPINIONS</a>
@@ -59,9 +59,9 @@
       <footer class="py-3 my-4">
         <ul class="nav justify-content-center border-bottom pb-3 mb-3">
           <li class="nav-item"><a href="{% url 'homepage' %}" class="nav-link px-2 text-muted">Home</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Games</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About Us</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contact</a></li>
+          <li class="nav-item"><a href="{% url 'games' %}" class="nav-link px-2 text-muted">Games</a></li>
+          <li class="nav-item"><a href="{% url 'about_us' %}" class="nav-link px-2 text-muted">About Us</a></li>
+          <li class="nav-item"><a href="{% url 'contact_us' %}" class="nav-link px-2 text-muted">Contact</a></li>
           <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Opinions</a></li>
         </ul>
         <p class="text-center text-muted">© Insanity Games {% now "Y" %} </p>
