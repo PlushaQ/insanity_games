@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Opinions - Insanity Games{% endblock %}
+
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <h1 class="my-4">Opinions</h1>
+
+      <a href="{% url 'add_opinion' %}" class="btn btn-primary float-end my-4">Add Opinion</a>
+
+      {% for opinion in opinions %}
+      <div class="card mb-4">
+        <div class="card-body">
+          <h2 class="card-title"><a href="#">{{ opinion.topic }}</a></h2>
+          <p class="card-text">{{ opinion.short_opinion }}</p>
+        </div>
+        <div class="card-footer text-muted">
+          Posted on {{ opinion.timestamp|date:"F jS, Y" }} by {{ opinion.user }} <a href="#">Full opinion</a>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

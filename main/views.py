@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from django.conf import settings
+from django.http import HttpResponseRedirect
+from django.core.mail import send_mail
 
 # Create your views here.
 
@@ -23,9 +26,27 @@ def about_us(request):
     "Diversity and Inclusion: We are committed to fostering a diverse and inclusive workplace, where every team member feels valued and empowered to contribute their unique talents and perspectives.",
     "Player-Centric: We prioritize the needs and desires of our players, always striving to create games that are fun, engaging, and enjoyable for everyone.",
     "Learning and Growth: We believe in the importance of continual learning and growth, both as individuals and as a team, and strive to provide opportunities for our team members to develop their skills and reach their full potential. "
-        ]
+    ]
     return render(request, 'about_us.html', {'history': history, 'mission': mission, 'values': values })
 
 
 def contact_us(request):
-    return render(request, 'contact_us.html')
+    if request.method == 'POST':
+        name = request.POST.get('name', '')
+        email = request.POST.get('email', '')
+        message = request.POST.get('message', '')
+        print("\n", settings.EMAIL_HOST_PASSWORD, "\n")
+        send_mail('Contact Form',
+                  'Name: {}\nEmail: {}\nMessage: {}'.format(name, email, message),
+                  settings.DEFAULT_FROM_EMAIL,
+                  [settings.DEFAULT_FROM_EMAIL],
+                  fail_silently=False)
+
+        # redirect to a thank-you page
+        return HttpResponseRedirect('thanks/')
+
+    return render(request, 'contact_us.html', {})
+
+
+def thanks(request):
+    return render(request, 'thanks.html')

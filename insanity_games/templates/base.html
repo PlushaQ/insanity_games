@@ -29,7 +29,7 @@
             <a class="nav-link" href="{% url 'contact_us' %}">CONTACT</a>
           </li>
           <li class="nav-item active core">
-            <a class="nav-link" href="#">OPINIONS</a>
+            <a class="nav-link" href="{% url 'all_opinions' %}">OPINIONS</a>
           </li>
         </ul>
         <ul class="navbar-nav ml-auto" id="user_nav">
@@ -62,7 +62,7 @@
           <li class="nav-item"><a href="{% url 'games' %}" class="nav-link px-2 text-muted">Games</a></li>
           <li class="nav-item"><a href="{% url 'about_us' %}" class="nav-link px-2 text-muted">About Us</a></li>
           <li class="nav-item"><a href="{% url 'contact_us' %}" class="nav-link px-2 text-muted">Contact</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Opinions</a></li>
+          <li class="nav-item"><a href="{% url 'all_opinions' %}" class="nav-link px-2 text-muted">Opinions</a></li>
         </ul>
         <p class="text-center text-muted">© Insanity Games {% now "Y" %} </p>
       </footer>
