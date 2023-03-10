@@ -8,6 +8,7 @@ Insanity Games
 
 {% block head %}
 <link rel="stylesheet" type="text/css" href="{% static 'homepage.css' %}">
+
 {% endblock %}
 
 {% block body %}
@@ -32,4 +33,55 @@ Insanity Games
         </div>
     </div>
 </div>
+
+<div class="jumbotron jumbotron-fluid " style="background-color: #51087E;'">
+  <div class="container text-center">
+    <h1 class="display-4 text-light">We are proud of every game we make!</h1>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for game in games|slice:":3" %}
+    <div class="col mb-4">
+      <div class="card h-100">
+        <img src="{{ game.cover.url }}" class="card-img-top" alt="{{ game.title }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ game.title }}</h5>
+          <p class="card-text">{{ game.short_description }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="text-center">
+    <a href="{% url 'games' %}" class="btn btn-primary mt-4">Show More Games</a>
+  </div>
+</div>
+
+<div class="jumbotron jumbotron-fluid mt-5" style="background-color: #51087E;'">
+  <div class="container text-center">
+    <h1 class="display-4 text-light">Latest News</h1>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center"">
+    <div class="card mb-4 text" style="width: 80%;">
+      <div class="card-body text-center">
+        <h3>{{ news.topic }}</h3>
+        <hr>
+        <p>{{ news.text }}</p>
+      </div>
+      <div class="card-footer">
+        <small>{{ news.pretty_publish_date }}</small>
+      </div>
+    </div>
+</div>
+
+
+<div class="text-center ">
+  <a href="{% url 'news' %}" class="btn btn-primary">More News</a>
+</div>
+
 {% endblock %}

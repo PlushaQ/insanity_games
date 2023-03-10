@@ -1,3 +1,5 @@
+import time
+
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -27,3 +29,6 @@ class Opinion(models.Model):
             return self.message[:50] + '...'
         else:
             return self.message
+
+    def pretty_time(self):
+        return self.time.strftime("%e %b %Y")

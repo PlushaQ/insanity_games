@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container mt-3">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h1>{{ opinion.topic }}</h1>
+      <hr>
+      <p>Message: </p>
+      <p>{{ opinion.message }}</p>
+      <hr>
+      <p>Rating: {{ opinion.rating }} stars</p>
+      <p><small>By: {{ opinion.user.username }} | Time: {{ opinion.pretty_time }}</small></p>
+      {% if user.is_authenticated and user == opinion.user %}
+        <form action="{% url 'delete_opinion' opinion.pk %}" method="POST">
+          {% csrf_token %}
+          <button class="btn btn-danger" type="submit">Delete Opinion</button>
+        </form>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -3,11 +3,16 @@ from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.core.mail import send_mail
 
+from games.models import Games
+from .models import News
+
 # Create your views here.
 
 
 def homepage(request):
-    return render(request, 'homepage.html')
+    games = Games.objects.all
+    news = News.objects.latest('publish_date')
+    return render(request, 'homepage.html', {'games': games, 'news': news})
 
 
 def about_us(request):
@@ -50,3 +55,8 @@ def contact_us(request):
 
 def thanks(request):
     return render(request, 'thanks.html')
+
+
+def all_news(request):
+    news = News.objects.all
+    return render(request, 'news.html', {'all_news': news})

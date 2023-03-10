@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+News
+{% endblock %}
+
+{% block body %}
+
+{% for news in all_news %}
+<div class="d-flex justify-content-center mt-5">
+    <div class="card mb-4 text" style="width: 80%;">
+      <div class="card-body text-center">
+        <h3>{{ news.topic }}</h3>
+        <hr>
+        <p>{{ news.text }}</p>
+      </div>
+      <div class="card-footer">
+        <small>{{ news.pretty_publish_date }}</small>
+      </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

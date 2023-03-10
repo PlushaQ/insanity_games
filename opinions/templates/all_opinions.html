@@ -13,11 +13,12 @@
       {% for opinion in opinions %}
       <div class="card mb-4">
         <div class="card-body">
-          <h2 class="card-title"><a href="#">{{ opinion.topic }}</a></h2>
+          <h2 class="card-title">{{ opinion.topic }}</h2>
           <p class="card-text">{{ opinion.short_opinion }}</p>
         </div>
         <div class="card-footer text-muted">
-          Posted on {{ opinion.timestamp|date:"F jS, Y" }} by {{ opinion.user }} <a href="#">Full opinion</a>
+          <p>Posted on {{ opinion.time }} by {{ opinion.user }}</p>
+          <a href="{% url 'opinion' opinion.id %}">Full opinion</a>
         </div>
       </div>
       {% endfor %}
