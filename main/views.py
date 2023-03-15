@@ -3,14 +3,14 @@ from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.core.mail import send_mail
 
-from games.models import Games
+from games.models import Game
 from .models import News
 
 # Create your views here.
 
 
 def homepage(request):
-    games = Games.objects.all
+    games = Game.objects.all
     news = News.objects.latest('publish_date')
     return render(request, 'homepage.html', {'games': games, 'news': news})
 

@@ -18,7 +18,7 @@
                         <p class="card-text">Release date: {{ game.pretty_release_date }}</p>
                         <p class="card-text">Genre: {{ game.genre }}</p>
                         <p class="card-text">Tags: {{ game.tags }}</p>
-                        <a href="{% url 'game' game.title %}" class="btn btn-primary">View Details</a>
+                        <a href="{% url 'game' game.slug %}" class="btn btn-primary">View Details</a>
                     </div>
                 </div>
             </div>

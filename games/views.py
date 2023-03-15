@@ -1,13 +1,13 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Games
+from .models import Game
 # Create your views here.
 
 
 def all_games(request):
-    games = Games.objects
+    games = Game.objects
     return render(request, 'games.html', {'games': games})
 
 
-def game_site(request, title):
-    game = get_object_or_404(Games, title=title)
+def game_site(request, slug):
+    game = get_object_or_404(Game, slug=slug)
     return render(request, 'game.html', {'game': game})

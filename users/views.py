@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 import re
 
+
 def login(request):
     if request.method == "POST":
         user = auth.authenticate(username=request.POST['username'], password=request.POST['password'])
@@ -35,6 +36,7 @@ def signup(request):
             except User.DoesNotExist:
                 user = User.objects.create_user(username=request.POST['username'], password=request.POST['password'])
                 auth.login(request, user)
+                print('123')
                 return redirect('homepage')
         else:
             return render(request, 'signup.html', {'error': "Passwords don't match ."})
